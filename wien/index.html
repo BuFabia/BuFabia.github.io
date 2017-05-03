@@ -198,7 +198,8 @@
         // Ausschnitt setzen
         // TODO: Ausschnitt auf Stationen des Stadtpaziergangs setzen
 		
-		map.setView(spaziergangPunkte)
+		var rahmen = (punkteSpaziergang.getBounds());
+			map.fitBounds(rahmen);
 		
     </script>
 
