@@ -84,6 +84,18 @@
 		
 		// Etappe laden
 		L.geoJSON(window.etappe01).addTo(map);
+		
+		// Icons von https://mapicons.mapsmarker.com/
+		var huts = [ 
+			L.marker([47.549263, 12.324513000000024], { title: "Gaudeamushütte", icon: L.icon ({ iconUrl:'icons/cabin-2.png'}) }),
+			L.marker([47.546639, 12.344426999999996], { title: "Obere Regalm", icon: L.icon ({ iconUrl:'icons/cabin-2.png'}) }),
+			L.marker([47.5380297, 12.397733099999982], {title: "Rummlerhof", icon: L.icon ({ iconUrl:'icons/cabin-2.png'}) })
+		];	
+		var hutsLayer = L.featureGroup();
+		for (var i=0; i<huts.length; i++) {
+			hutsLayer.addLayer(huts[i]);
+		}
+		hutsLayer.addTo(map);
     </script>
 
 </body>
