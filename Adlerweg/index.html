@@ -34,6 +34,8 @@
 	<h3>Adlerweg-Etappe 1: St. Johann - Gaudeamushütte</h3>
 	<p>Die erste Etappe am Adlerweg führt vom St. Johanner Ortsteil Hinterkaiser zur Gaudeamushütte auf 1.263 Metern Seehöhe. Zei besondere Naturschauspiele entlang der Strecke sind der imposante Schleierwasserfall und die Höhle Diebsöfen.</p>
     <div id="map"></div>
+	<select id="etappen">
+	</select>
 
     <script>
         // WMTS-Layer basemap.at - Quelle: http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
@@ -88,6 +90,7 @@
 		// GPX Track laden
 	    gpxTrack = omnivore.gpx('Data/AdlerwegEtappe01.gpx').addTo(map);
 		
+		
 		// nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
 	    gpxTrack.on('ready', function () {
 	    // Popup hinzufügen
@@ -111,6 +114,67 @@
 	               // Höhenprofil erzeugen
 	               gpxTrack.eachLayer(function(layer) {
 	                   profileControl.addData(layer.feature);
+						//console.log(layer.feature.geometry.coordinates);
+						var pts = layer.feature.geometry.coordinates;	
+						
+						for ( var i = 1; i < pts.length; i += 1){
+							//console.log(pts[i]);	//aktueller Punkt
+							//console.log(pts[i-1]);	// vorhergehender Punkt
+							
+							// Entfernung bestimmen 
+							var dist = map.distance (
+								[pts[i][1],pts[i][0]],
+								[pts[i-1][1],pts[i-1][0]]
+							).toFixed(0);
+							//console.log(dist);
+							
+							var delta = pts[i][2] - pts[i-1][2];
+							//console.log(delta,"Höhenmeter auf",dist,"m Strecke");
+							
+							var rad = Math.atan(delta/dist);
+							var deg = (rad * (180 / Math.PI)).toFixed(1);
+							//console.log(deg);
+							
+							//var rot = ["#ab2524", "#a02128", "#a1232b", "#8d1d2c", "#701f29", "#5e2028"];
+							//var gruen = ["#42EB00", "#38C400", "#288F00", "#195700", "#0A2400"];
+							
+							//colorbrewer
+							//rot ['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026']
+							// grün ['#ffffcc','#d9f0a3','#addd8e','#78c679','#31a354','#006837']
+							
+							var farbe;
+							switch(true) { // checks if condition is true, not for certain values of a variable
+								case (deg >= 20) :  farbe = "#bd0026"; break;
+								case (deg >= 15) :  farbe = "#f03b20"; break;
+								case (deg >= 10) :  farbe = "#fd8d3c"; break;
+								case (deg >= 5) :  farbe = "#feb24c"; break;
+								case (deg >= 1) :  farbe = "#fed976"; break;
+								case (deg >= -1) :  farbe = "yellow"; break;
+								case (deg >= -5) :  farbe = "#d9f0a3"; break;
+								case (deg >=-10) :  farbe = "#addd8e"; break;
+								case (deg >=-15) :  farbe = "#78c679"; break;
+								case (deg >= -20) :  farbe = "#31a354"; break;
+								case (deg < -20) :  farbe = "#006837"; break;
+								}
+								console.log(deg,farbe);
+								
+								
+								// Linie zeichnen
+								var pointA = new L.LatLng(pts[i][1],pts[i][0]);
+								var pointB = new L.LatLng(pts[i-1][1],pts[i-1][0]);
+								var pointList = [pointA, pointB];
+						   
+								var firstpolyline = new L.Polyline(pointList, {
+								 color: farbe,
+								 weight: 6,
+								 opacity: 1.0,
+								 smoothFactor: 1
+
+		});
+    
+      firstpolyline.addTo(map);
+						}	
+						
 	               });
 	           });
 			   
@@ -183,7 +247,7 @@
 			}
 		});
 		
-		
+			console.log(profileControl);
     </script>
 <h4><a href="https://github.com/bufabia">Autorin: Fabia Buchner</a></h4>
 </body>
