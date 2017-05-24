@@ -23,10 +23,15 @@
             padding: 0px;
             margin: 0px;
         }
-        html, body, #map {
+        html, body{
             height: 100vh;
             width: 100vw;
         }
+		#map {
+			height: 800px;
+			width: 1000px:
+			
+		}
     </style>
 </head>
 
@@ -35,6 +40,31 @@
 	<p>Die erste Etappe am Adlerweg führt vom St. Johanner Ortsteil Hinterkaiser zur Gaudeamushütte auf 1.263 Metern Seehöhe. Zei besondere Naturschauspiele entlang der Strecke sind der imposante Schleierwasserfall und die Höhle Diebsöfen.</p>
     <div id="map"></div>
 	<select id="etappen">
+	<option value="AdlerwegEtappe01.gpx">Adlerweg Etappe 1</option>
+		<option value="AdlerwegEtappe02.gpx">Adlerweg Etappe 2</option>
+		<option value="AdlerwegEtappe03.gpx">Adlerweg Etappe 3</option>
+		<option value="AdlerwegEtappe04.gpx">Adlerweg Etappe 4</option>
+		<option value="AdlerwegEtappe05.gpx">Adlerweg Etappe 5</option>
+		<option value="AdlerwegEtappe06.gpx">Adlerweg Etappe 6</option>
+		<option value="AdlerwegEtappe07.gpx">Adlerweg Etappe 7</option>
+		<option value="AdlerwegEtappe08.gpx">Adlerweg Etappe 8</option>
+		<option value="AdlerwegEtappe09.gpx">Adlerweg Etappe 9</option>
+		<option value="AdlerwegEtappe10.gpx">Adlerweg Etappe 10</option>
+		<option value="AdlerwegEtappe11.gpx">Adlerweg Etappe 11</option>
+		<option value="AdlerwegEtappe12.gpx">Adlerweg Etappe 12</option>
+		<option value="AdlerwegEtappe13.gpx">Adlerweg Etappe 13</option>
+		<option value="AdlerwegEtappe14.gpx">Adlerweg Etappe 14</option>
+		<option value="AdlerwegEtappe15.gpx">Adlerweg Etappe 15</option>
+		<option value="AdlerwegEtappe16.gpx">Adlerweg Etappe 16</option>
+		<option value="AdlerwegEtappe17.gpx">Adlerweg Etappe 17</option>
+		<option value="AdlerwegEtappe18.gpx">Adlerweg Etappe 18</option>
+		<option value="AdlerwegEtappe19.gpx">Adlerweg Etappe 19</option>
+		<option value="AdlerwegEtappe20.gpx">Adlerweg Etappe 20</option>
+		<option value="AdlerwegEtappe21.gpx">Adlerweg Etappe 21</option>
+		<option value="AdlerwegEtappe22.gpx">Adlerweg Etappe 22</option>
+		<option value="AdlerwegEtappe23.gpx">Adlerweg Etappe 23</option>
+		<option value="AdlerwegEtappe24.gpx">Adlerweg Etappe 24</option>
+		<option value="AdlerwegEtappe25.gpx">Adlerweg Etappe 25</option>
 	</select>
 
     <script>
@@ -87,14 +117,13 @@
 	    });
 	    profileControl.addTo(map);
 
+		function loadTrack(track) {
 		// GPX Track laden
-	    gpxTrack = omnivore.gpx('Data/AdlerwegEtappe01.gpx').addTo(map);
-		
-		
+	    gpxTrack = omnivore.gpx('Data/'+track).addTo(map);
 		// nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
 	    gpxTrack.on('ready', function () {
 	    // Popup hinzufügen
-	   var markup = '<h3>Adlerweg-Etappe 1: St. Johann - Gaudeamushütte</h3>';
+		var markup = '<h3>Adlerweg-Etappe 1: St. Johann - Gaudeamushütte</h3>';
 	   markup += '<p>Die erste Etappe am Adlerweg führt vom St. Johanner Ortsteil Hinterkaiser zur Gaudeamushütte auf 1.263 Metern Seehöhe. Zei besondere Naturschauspiele entlang der Strecke sind der imposante Schleierwasserfall und die Höhle Diebsöfen.</p>'
 	               markup += '<li>Ausgangspunkt: Rummlerhof</li>';
 	               markup += '<li>Endpunkt: Gaudeamushütte</li>';
@@ -156,7 +185,7 @@
 								case (deg >= -20) :  farbe = "#31a354"; break;
 								case (deg < -20) :  farbe = "#006837"; break;
 								}
-								console.log(deg,farbe);
+								//console.log(deg,farbe);
 								
 								
 								// Linie zeichnen
@@ -170,23 +199,15 @@
 								 opacity: 1.0,
 								 smoothFactor: 1
 
-		});
+							});
     
-      firstpolyline.addTo(map);
+									firstpolyline.addTo(map);
 						}	
 						
 	               });
 	           });
-			   
-        // WMTS-Layer Auswahl hinzufügen
-        var layerControl = L.control.layers({
-            "basemap.at - STANDARD": layers.geolandbasemap,
-            "basemap.at - GRAU": layers.bmapgrau,
-            "basemap.at - OVERLAY": layers.bmapoverlay,
-            "basemap.at - HIGH-DPI": layers.bmaphidpi,
-            "basemap.at - ORTHOFOTO": layers.bmaporthofoto30cm,
-            "OpenStreetMap": layers.osm,
-        }).addTo(map);
+			  } // end function loadTrack 
+        
 
         // leaflet-hash aktivieren
         var hash = new L.Hash(map);
@@ -247,7 +268,26 @@
 			}
 		});
 		
-			console.log(profileControl);
+		// WMTS-Layer Auswahl hinzufügen
+        var layerControl = L.control.layers({
+            "basemap.at - STANDARD": layers.geolandbasemap,
+            "basemap.at - GRAU": layers.bmapgrau,
+            "basemap.at - OVERLAY": layers.bmapoverlay,
+            "basemap.at - HIGH-DPI": layers.bmaphidpi,
+            "basemap.at - ORTHOFOTO": layers.bmaporthofoto30cm,
+            "OpenStreetMap": layers.osm,
+        }).addTo(map);
+		
+		// zwischen den einzelnen Etappen hin und her schalten
+		var etappenSelektor = document.getElementById("etappen");
+		//console.log("Selektor",etappenSelektor);
+		etappenSelektor.onchange = function (evt) {
+			console.log("Change event:", evt);
+			console.log("GPX Track laden", etappenSelektor[etappenSelektor.selectedIndex].value);
+			loadTrack(etappenSelektor[etappenSelektor.selectedIndex].value);
+		}
+		loadTrack("AdlerwegEtappe01.gpx");
+				
     </script>
 <h4><a href="https://github.com/bufabia">Autorin: Fabia Buchner</a></h4>
 </body>
