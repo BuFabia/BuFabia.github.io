@@ -39,26 +39,11 @@ window.onload = function () {
 			
 			gpxTrack = omnivore.gpx('data/' + track).addTo(map);
 			
-			/*document.getElementById("Titel").innerHTML = window.ETAPPENINFO[track].Titel;
-			document.getElementById("Kurztext").innerHTML = window.ETAPPENINFO[track].Kurztext;
-			document.getElementById("Streckenbeschreibung").innerHTML = window.ETAPPENINFO[track].Streckenbeschreibung;*/
+			
 			
 			// nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
 			gpxTrack.on('ready', function () {
-				// Popup hinzufügen
-				var markup = '<h3>Transalp-Etappe 1: Innsbruck-Bozen</h3>';
-				markup += '<p>Die erste Etappe der Transalp führt von der Innenstadt Innsbrucks über den Brennerpass nach Sterzing. Von dort geht es auf das 2211m hohe Penser Joch und abschließend die 50km lange Abfahrt in die Hauptstadt Südtirols Bozen. Besondere Highlights dieser Etappe sind die Befahrung des Penser Jochs von Norden und die anschließende über 50 km lange Abfahrt durch das Sarntal und die tunnelreiche Schlucht im unteren Teil hinunter nach Bozen.</p>'
-				markup += '<li>Ausgangspunkt: Innsbruck-Innbrücke</li>';
-				markup += '<li>Endpunkt: Bozen</li>';
-				markup += '<li>Höhenmeter bergauf: 3472</li>';
-				markup += '<li>Höhenmeter bergab: 3777</li>';
-				markup += '<li>Höchster Punkt: 2211</li>';
-				markup += '<li>Schwierigkeitsgrad: mittelschwierig</li>';
-				markup += '<li>Streckenlänge (in km): 120</li>';
-				markup += '<li>Gehzeit (in Stunden): 6</li>';
-				markup += '<li>Einkehrmöglichkeiten: Sterzing, Penser Joch, Bozen</li>';
-				;
-				gpxTrack.bindPopup(markup, { maxWidth : 450 });
+		
 
 				// Ausschnitt setzen
 				map.fitBounds(gpxTrack.getBounds());
@@ -144,14 +129,7 @@ window.onload = function () {
         // WMTS-Layer Auswahl hinzufügen
 
 
-	//einzelne Etappen wählen
-	var etappenSelektor = document.getElementById ("etappen");
-		//console.log("Selektor", etappenSelektor);
-		//etappenSelektor.onchange = function (evt) {
-		//console.log("Change event: ", evt);
-		//console.log("GPX Track laden: ", etappenSelektor[etappenSelektor.selectedIndex].value);
-		//loadTrack(etappenSelektor[etappenSelektor.selectedIndex].value);
-		//}
-		loadTrack("Etappe4.gpx");
+
+		loadTrack("Data/Etappe4.gpx");
 		
 };

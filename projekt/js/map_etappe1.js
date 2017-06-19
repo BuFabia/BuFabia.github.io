@@ -126,6 +126,6 @@ window.onload = function () {
 		});
 		L.marker([46.49926, 11.35661], { title: "Start Etappe 2", icon: start}).addTo(map);
 
-		loadTrack("Etappe1.gpx");
+		loadTrack("Data/Etappe1.gpx");
 		
 };
