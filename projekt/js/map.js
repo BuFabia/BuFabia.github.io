@@ -118,10 +118,6 @@ window.onload = function () {
 			iconAnchor: [16, 37]
 		});
 		L.marker([47.267222, 11.392778], { title: "Start Etappe 1", icon: start}).addTo(map);
-    
-        marker.bindPopup('<h2>Blick vom Patscherkofel!</h2><img style="width:300px;" src="https://apps.tirol.gv.at/luft/patscherkofel.jpg" alt="Webcam" />', {
-            minWidth : 320
-        });
 		
 		var start = L.icon({
 			iconUrl: 'icons/Etappe2.png',
