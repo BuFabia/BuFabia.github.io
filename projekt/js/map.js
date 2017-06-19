@@ -117,25 +117,25 @@ window.onload = function () {
 			iconUrl: 'icons/Etappe1.png',
 			iconAnchor: [16, 37]
 		});
-		L.marker([47.267222, 11.392778], { title: "Start Etappe 1", icon: start}).addTo(map);
+		L.marker([47.267222, 11.392778], { title: "Start Etappe 1: Dauer 6h, Länge 120 km", icon: start}).addTo(map);
 		
 		var start = L.icon({
 			iconUrl: 'icons/Etappe2.png',
 			iconAnchor: [16, 37]
 		});
-		L.marker([46.49926, 11.35661], { title: "Start Etappe 2", icon: start}).addTo(map);
+		L.marker([46.49926, 11.35661], { title: "Start Etappe 2: Dauer 7h, Länge 138 km", icon: start}).addTo(map);
 		
 		var start = L.icon({
 			iconUrl: 'icons/Etappe3.png',
 			iconAnchor: [16, 37]
 		});
-		L.marker([46.465, 10.373056], { title: "Start Etappe 3", icon: start}).addTo(map);
+		L.marker([46.465, 10.373056], { title: "Start Etappe 3: Dauer 5h, Länge 105 km", icon: start}).addTo(map);
 		
 		var start = L.icon({
 			iconUrl: 'icons/Etappe4.png',
 			iconAnchor: [16, 37]
 		});
-		L.marker([46.366667, 11.033333], { title: "Start Etappe 4", icon: start}).addTo(map);
+		L.marker([46.366667, 11.033333], { title: "Start Etappe 4: Dauer 4h, Länge 75 km", icon: start}).addTo(map);
 		
 		var end = L.icon({
 			iconUrl: 'icons/Ziel.png',
