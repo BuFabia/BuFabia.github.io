@@ -37,7 +37,7 @@ window.onload = function () {
 			console.log("etappeninfo: ", window.ETAPPENINFO);
 			
 			
-			gpxTrack = omnivore.gpx('data/' + track).addTo(map);
+			gpxTrack = omnivore.gpx('Data/' + track).addTo(map);
 			
 
 			
@@ -126,6 +126,6 @@ window.onload = function () {
 		});
 		L.marker([46.49926, 11.35661], { title: "Start Etappe 2", icon: start}).addTo(map);
 
-		loadTrack("Data/Etappe1.gpx");
+		loadTrack("Etappe1.gpx");
 		
 };

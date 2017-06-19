@@ -37,7 +37,7 @@ window.onload = function () {
 			console.log("etappeninfo: ", window.ETAPPENINFO);
 			
 			
-			gpxTrack = omnivore.gpx('data/' + track).addTo(map);
+			gpxTrack = omnivore.gpx('Data/' + track).addTo(map);
 			
 			
 			// nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
@@ -146,6 +146,6 @@ window.onload = function () {
 
 
 
-		loadTrack("Data/AlleEtappen.gpx");
+		loadTrack("AlleEtappen.gpx");
 		
 };

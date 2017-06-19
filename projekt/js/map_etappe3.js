@@ -37,7 +37,7 @@ window.onload = function () {
 			console.log("etappeninfo: ", window.ETAPPENINFO);
 			
 			
-			gpxTrack = omnivore.gpx('data/' + track).addTo(map);
+			gpxTrack = omnivore.gpx('Data/' + track).addTo(map);
 			
 			
 			
@@ -132,6 +132,6 @@ window.onload = function () {
 
 
 	
-		loadTrack("Data/Etappe3.gpx");
+		loadTrack("Etappe3.gpx");
 		
 };
